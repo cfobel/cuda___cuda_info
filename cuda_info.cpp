@@ -12,7 +12,5 @@ int main(int argc, char** argv) {
         cout << dev.get_device_info() << endl;
     }
 
-    while(1);
-
     return 0;
 }
