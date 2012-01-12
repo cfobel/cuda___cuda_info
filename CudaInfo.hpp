@@ -49,6 +49,33 @@ public:
 };
 
 
+class ContextInfo {
+public:
+    static size_t get_total_mem_bytes() {
+        size_t free, total;
+        cudaMemGetInfo(&free, &total);
+        return total;
+    }
+    static size_t get_total_mem_Kbytes() {
+        return get_total_mem_bytes() / (1 << 10);
+    }
+    static size_t get_total_mem_Mbytes() {
+        return get_total_mem_bytes() / (1 << 20);
+    }
+    static size_t get_available_mem_bytes() {
+        size_t free, total;
+        cudaMemGetInfo(&free, &total);
+        return free;
+    }
+    static size_t get_available_mem_Kbytes() {
+        return get_available_mem_bytes() / (1 << 10);
+    }
+    static size_t get_available_mem_Mbytes() {
+        return get_available_mem_bytes() / (1 << 20);
+    }
+};
+
+
 class CudaKernel {
     kernel_ptr kernel;
     cudaFuncAttributes func_attr;
